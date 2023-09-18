@@ -413,6 +413,16 @@ span {
   border: 2px solid orangered;
 }
 
+.body-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0);
+  z-index: 9999;
+}
+
 .frame-close {
   position: absolute;
   top: -26px;
@@ -931,6 +941,7 @@ textarea {
   :root {
     --font-size: 12px;
   }
+
   #frame {
     width: 70%;
   }
@@ -1143,8 +1154,10 @@ textarea {
   .contact .my-card {
     height: 390px;
   }
+
   #frame {
     width: 90%;
+    height: 50%;
   }
 }
 
@@ -1317,19 +1330,24 @@ textarea {
 
 /* анимация */
 .animation {
-  opacity: 0; /* Начальное состояние с прозрачностью 0 */
-  transform: translateX(100%); /* Начальное положение вправо */
-  animation: fadeInRight 1s ease forwards; /* Анимация появления */
+  opacity: 0;
+  /* Начальное состояние с прозрачностью 0 */
+  transform: translateX(100%);
+  /* Начальное положение вправо */
+  animation: fadeInRight 1s ease forwards;
+  /* Анимация появления */
 }
 
 @keyframes fadeInRight {
   0% {
     opacity: 0;
-    transform: translateX(100%); /* Начальное положение вправо */
+    transform: translateX(100%);
+    /* Начальное положение вправо */
   }
+
   100% {
     opacity: 1;
-    transform: translateX(0%); /* Конечное положение - без смещения */
+    transform: translateX(0%);
+    /* Конечное положение - без смещения */
   }
 }
-

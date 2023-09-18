@@ -135,13 +135,21 @@
         $(iframe).attr("src", urlMacaroons);
         console.log('Mac');
       }
-
+  
       $("#frame").css("display", "block");
+      $(".background-overlay").css("display", "block"); // Отображаем задний фон
+      $(".portfolio").addClass("body-overlay"); // Добавляем класс для затемнения фона
+      $("html, body").css("overflow", "hidden"); // Отключаем прокрутку
     }
   });
+  
   $(".frame-close").click(function () {
     $("#frame").css("display", "none");
+    $(".background-overlay").css("display", "none"); // Скрываем задний фон
+    $(".portfolio").removeClass("body-overlay"); // Удаляем класс для затемнения фона
+    $("html, body").css("overflow", "auto"); // Включаем прокрутку
   });
+  
 
   // валидация формы
   let name = $('.base-input').eq(0);
