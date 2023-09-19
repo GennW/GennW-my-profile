@@ -911,6 +911,33 @@ textarea {
 }
 
 
+/* анимация */
+.animation {
+  opacity: 0;
+}
+
+.fadeInRight {
+  
+  /* Начальное состояние с прозрачностью 0 */
+  transform: translateX(100%);
+  /* Начальное положение вправо */
+  animation: fadeInRight 1s ease forwards;
+  /* Анимация появления */
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+    /* Начальное положение вправо */
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+    /* Конечное положение - без смещения */
+  }
+}
 
 /* addaptive */
 
@@ -1159,6 +1186,12 @@ textarea {
     width: 90%;
     height: 50%;
   }
+
+  /* сброс анимации */
+  .menu.fadeInRight {
+    animation: unset;
+    transform: unset;
+  }
 }
 
 
@@ -1327,31 +1360,3 @@ textarea {
   }
 }
 
-
-/* анимация */
-.animation {
-  opacity: 0;
-}
-
-.fadeInRight {
-  
-  /* Начальное состояние с прозрачностью 0 */
-  transform: translateX(100%);
-  /* Начальное положение вправо */
-  animation: fadeInRight 1s ease forwards;
-  /* Анимация появления */
-}
-
-@keyframes fadeInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(100%);
-    /* Начальное положение вправо */
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0%);
-    /* Конечное положение - без смещения */
-  }
-}
