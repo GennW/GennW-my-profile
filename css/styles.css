@@ -1331,6 +1331,10 @@ textarea {
 /* анимация */
 .animation {
   opacity: 0;
+}
+
+.fadeInRight {
+  
   /* Начальное состояние с прозрачностью 0 */
   transform: translateX(100%);
   /* Начальное положение вправо */

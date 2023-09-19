@@ -31,7 +31,7 @@
 
   // кнопка вариант 2
   $('.my-card-btn').on('click', () => {
-    var contactOffsetTop = $('.contact').offset().top;
+    let contactOffsetTop = $('.contact').offset().top;
     $('html, body').animate({
       scrollTop: contactOffsetTop
     }, 1000); // время анимации в миллисекундах
@@ -135,21 +135,21 @@
         $(iframe).attr("src", urlMacaroons);
         console.log('Mac');
       }
-  
+
       $("#frame").css("display", "block");
       $(".background-overlay").css("display", "block"); // Отображаем задний фон
       $(".portfolio").addClass("body-overlay"); // Добавляем класс для затемнения фона
       $("html, body").css("overflow", "hidden"); // Отключаем прокрутку
     }
   });
-  
+
   $(".frame-close").click(function () {
     $("#frame").css("display", "none");
     $(".background-overlay").css("display", "none"); // Скрываем задний фон
     $(".portfolio").removeClass("body-overlay"); // Удаляем класс для затемнения фона
     $("html, body").css("overflow", "auto"); // Включаем прокрутку
   });
-  
+
 
   // валидация формы
   let name = $('.base-input').eq(0);
@@ -203,8 +203,47 @@
     }
   })
 
-// анимация
+  // анимация
 
+  // Функция для проверки, виден ли элемент на экране
+  function isElementVisible(element) {
+    let rect = element.getBoundingClientRect();
+    let windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    
+    /*
+    рассчитываем высоту элемента (`elementHeight`) путем 
+    вычитания верхней границы (`rect.top`) из нижней границы 
+    (`rect.bottom`).Затем мы проверяем, что верхняя граница 
+    элемента находится выше или равна нулю, а нижняя граница
+    элемента находится в двух третях экрана (`windowHeight / 3 * 2`) 
+    и верхняя граница элемента находится ниже или равна высоте
+    экрана минус одна треть высоты эемента (`windowHeight - elementHeight / 3`). */
+    let elementHeight = rect.bottom - rect.top;
+    return (
+      rect.top >= 0 &&
+      rect.bottom >= windowHeight / 3 * 2 &&
+      rect.top <= windowHeight - elementHeight / 3
+    );
+  }
+
+  // Функция для обработки скролла страницы
+  function handleScroll() {
+    let elements = document.querySelectorAll('.animation');
+
+    for (let i = 0; i < elements.length; i++) {
+      let element = elements[i];
+
+      if (isElementVisible(element)) {
+        element.classList.add('fadeInRight');
+      }
+    }
+  }
+
+  // Обработчик события скролла
+  window.addEventListener('scroll', handleScroll);
+
+  // Вызов функции при загрузке страницы для отображения видимых блоков
+  handleScroll();
 
 
 });
